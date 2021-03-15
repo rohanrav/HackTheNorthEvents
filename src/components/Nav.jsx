@@ -11,14 +11,13 @@ function NavbarD() {
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
+                style={{marginRight: '10px'}}
             />{' '}
-            <strong style={{fontWeight: 500}}>Hack The North</strong>
+            <strong style={{fontWeight: 600}}>Hack The North</strong>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-                <Nav.Link href="#features">Events</Nav.Link>
-            </Nav>
+            <Nav className="mr-auto"></Nav>
             <Nav>
                 <Button variant="outline-dark">Log In</Button>
             </Nav>

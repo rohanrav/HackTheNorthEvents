@@ -1,13 +1,25 @@
 import axios from 'axios';
 
-// axios.get("/test").then(response => {
-//   console.log(response.data)
-// })
+function getDataAll(loggedIn) {
+    const url = "https://api.hackthenorth.com/v3/graphql?query={ events { id name event_type permission start_time end_time " + 
+                     "description speakers { name profile_pic } public_url private_url related_events } }"
 
-function getDataAll(permission) { // return a list of events
-/* // filter by permission 
-https://api.hackthenorth.com/v3/graphql?query={ events { id name event_type permission start_time end_time description speakers { name profile_pic } public_url private_url related_events } }
-*/
+    const result = () => {
+        const url = "https://api.hackthenorth.com/v3/graphql?query={ events { id name event_type permission start_time end_time " + 
+                     "description speakers { name profile_pic } public_url private_url related_events } }"
+
+        axios.get(url).then((response) => { 
+            console.log(response.data);
+        }).catch(error => console.error(`Error: ${error}`));
+    }
+            res.filter((event, idx) => {
+                if (!loggedIn) {
+                    if (event.permission === 'private') {
+                        return false;
+                    }
+                }
+                return true;
+                })
 }
 
 function getDataById(id, permission) { // return 1 event if found, and null if not found
@@ -17,9 +29,8 @@ function getDataById(id, permission) { // return 1 event if found, and null if n
 }
 
 function getDataByName(eventName, permission) { // return 1 event if found, and null if not found
-    data = getDataAll(permission);
+    //data = getDataAll(permission);
     // search event by name - have all events dissapear and event results show up 
 }
 
-export default getDataAll;
-export { getDataById, getDataByName };
+export { getDataAll, getDataById, getDataByName };

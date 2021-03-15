@@ -15,6 +15,7 @@ code {
 html {
   padding-left: 50px;
   padding-right: 50px;
+  background-color: #ecf0f1;
 }
 
 .navbar {
@@ -24,4 +25,10 @@ html {
 .events-section {
   margin-top: 75px;
 }
+
+/* a, a:hover, a:active, a:visited {
+  text-decoration: none;
+} */
+
+
 

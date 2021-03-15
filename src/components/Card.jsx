@@ -9,16 +9,19 @@ import { Button, Card, Badge } from 'react-bootstrap';
 */
 
 function CardComponent(props) {
-    return (<Card style={{ width: '250px', marginTop: '100px' }}>
-    <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{props.startTime}</Card.Subtitle>
-        <Card.Text>
-            {props.description}
-        </Card.Text>
-        <Button variant="primary" className="btn-sm btn-block">See more details</Button>
-    </Card.Body>
-    </Card>)
+    return (
+        <Card style={{ width: '250px', marginTop: '40px' }}>
+        <Card.Body>
+            <Card.Title>{props.name}</Card.Title>
+            <Card.Text>{props.description}</Card.Text>
+            <a href={"/event/" + props.id}>
+                <Button variant="primary" className="btn-sm btn-block">See more details</Button>
+            </a>
+        </Card.Body>
+        <Card.Footer>
+            <small className="text-muted">{props.startTime}</small>
+        </Card.Footer>
+        </Card>);
 }
 
 export default CardComponent;
