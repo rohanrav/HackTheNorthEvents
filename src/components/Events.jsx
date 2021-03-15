@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card'
-import axios from 'axios';
 
 const options = { weekday: 'long', month: 'long', day: 'numeric' };
 
@@ -13,7 +12,7 @@ function renderCard(event) {
             ></Card>);
 }
 
-function EventsComponent(props) { //props.isLoggedIn
+function EventsComponent(props) {
     const [ events, setEvents ] = useState([]);
 
     useEffect(() => {
@@ -36,7 +35,7 @@ function EventsComponent(props) { //props.isLoggedIn
     }, [])
 
     return (
-    <div className="events-section">
+    <div>
         <div className="grid">
             {events.map((event) => renderCard(event))}
         </div>

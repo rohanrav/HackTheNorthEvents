@@ -4,7 +4,7 @@ import { Navbar, Nav, Button } from 'react-bootstrap';
 function NavbarD() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
             <img
                 alt=""
                 src={process.env.PUBLIC_URL + "/logo.svg"}
@@ -19,7 +19,7 @@ function NavbarD() {
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto"></Nav>
             <Nav>
-                <Button variant="outline-dark">Log In</Button>
+                <Button variant="primary">Log In</Button>
             </Nav>
         </Navbar.Collapse>
         </Navbar>

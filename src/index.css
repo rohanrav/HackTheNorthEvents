@@ -22,10 +22,6 @@ html {
   padding: 0.75rem 1.5rem 0.75rem 1.5rem;
 }
 
-.events-section {
-  margin-top: 75px;
-}
-
 .event-card {
   width: 200px;
   margin: 20px;
@@ -42,4 +38,7 @@ html {
   flex-basis: calc(25% - 40px);
 }
 
-
+.events-heading {
+  color: #212629; 
+  margin: 85px 0 0 20px;
+}
