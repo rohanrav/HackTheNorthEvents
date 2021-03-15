@@ -26,9 +26,20 @@ html {
   margin-top: 75px;
 }
 
-/* a, a:hover, a:active, a:visited {
-  text-decoration: none;
-} */
+.event-card {
+  width: 200px;
+  margin: 20px;
+}
 
+.grid {
+  min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.grid > div {
+  flex-basis: calc(25% - 40px);
+}
 
 

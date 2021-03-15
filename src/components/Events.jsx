@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card'
-import { CardDeck } from 'react-bootstrap';
 import axios from 'axios';
-//import { getDataAll }  from '../fetchData';
+
+const options = { weekday: 'long', month: 'long', day: 'numeric' };
 
 function renderCard(event) {
     return (<Card id={event.id}
                 key={event.id}
                 name={event.name} 
                 description={event.description.substring(0, 250) + '...'} 
-                startTime={event.startTime}
+                startTime={new Date(event.start_time).toLocaleDateString(undefined, options)}
             ></Card>);
 }
 
@@ -37,9 +37,9 @@ function EventsComponent(props) { //props.isLoggedIn
 
     return (
     <div className="events-section">
-        <CardDeck>
-            {events.map((event, idx) => renderCard(event))}
-        </CardDeck>
+        <div className="grid">
+            {events.map((event) => renderCard(event))}
+        </div>
     </div>);
 }
 
