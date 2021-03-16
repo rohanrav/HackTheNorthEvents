@@ -36,7 +36,7 @@
         float: none;
         list-style: none;
         text-align: center;
-        padding: 20px 0 10px 0;
+        padding: 20px 0 20px 0;
     }  
 
     .login-card {
@@ -62,6 +62,10 @@
 
       .related-events-title {
           margin: 20px 0 0 0;
+      }
+
+      .related-events-card {
+          min-width: 18rem;
       }
   }
 

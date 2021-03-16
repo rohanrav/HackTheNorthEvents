@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function CardComponent(props) {
     return (
-        <Card className="event-card" style={{ minWidth: '18rem' }}>
+        <Card className="event-card">
         <Card.Body>
             <Card.Title>{props.name}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{props.startTime}</Card.Subtitle>

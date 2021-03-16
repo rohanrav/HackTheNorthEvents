@@ -64,6 +64,7 @@ function EventDetail(props) {
                     name={event.name} 
                     description={event.description.substring(0, 250) + '...'} 
                     startTime={new Date(event.start_time).toLocaleDateString(undefined, options)}
+                    className="related-events-card"
                 ></Card>);
     }
 
