@@ -16,25 +16,34 @@ function EventsComponent(props) {
     const [ events, setEvents ] = useState([]);
 
     useEffect(() => {
-        fetch('https://api.hackthenorth.com/v3/graphql?query={ events { id name event_type permission start_time end_time description speakers { name profile_pic } public_url private_url related_events } }')
-        .then((response) => response.json())
-        .then((data) => {
-            let res = data.data.events;
-            res = res.filter((event) => {
-                if (!props.isLoggedIn) {
-                    console.log('triggered')
-                    if (event.permission === 'private') {
-                        return false;
-                    }
+        console.log(props.filter.eventType)
+        let res = props.eventData.filter((event) => {
+            if (!props.isLoggedIn) {
+                if (event.permission === 'private') {
+                    return false;
                 }
-                if (event.name.toLowerCase().includes(props.filter.search.toLowerCase())) {
+            }
+
+            if (event.name.toLowerCase().includes(props.filter.search.toLowerCase())) {
+                if (props.filter.eventType[event.event_type]) {
                     return true;
                 }
-                return false;
-            })
-            setEvents(res)
+            }
+
+            return false;
         });
-    }, [props.filter])
+        
+        res.sort((a, b) => {
+            let sortResult = new Date(b.start_time) - new Date(a.start_time);;
+            if (props.filter.sortByTime) {
+                return sortResult;
+            } else {
+                return -sortResult;
+            }
+        });
+    
+        setEvents(res);
+    }, [props.filter, props.isLoggedIn, props.eventData]);
 
     return (
     <div>

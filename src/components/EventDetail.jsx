@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import Footer from './Footer';
 
 function EventDetail({ match }) {
-    useEffect(() => {
-        fetchEvent();
-    }, []);
-
     const [ event, setEvent ] = useState({});
     const [ relatedEvents, setRelatedEvents ] = useState([]);
 
-    const fetchEvent = async () => {
-        const res = await fetch(getUrl(match.params.id));
-        const item = await res.json();
-        setEvent(item.data.event);
+    useEffect(() => {
+        fetch(getUrl(match.params.id))
+        .then((response) => response.json())
+        .then((data) => {
+            setEvent(data.data.event);
+            getRelatedEvents(data.data.event.related_events);
+        });
+    }, []);
 
-        const related = item.data.event.related_events;
-        related.map(async element => {
-            const relatedRes = await fetch(getUrl(element));
-            const relatedItem = await relatedRes.json();
-            setRelatedEvents(previousState => ([...previousState, relatedItem.data.event]));
-        })
+    const getRelatedEvents = (related_events) => {
+        if (related_events) {
+            related_events.forEach((id) => {
+                fetch(getUrl(id))
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data.data.event);
+                    setRelatedEvents(prev => {
+                        return [...prev, data.data.event]
+                    });
+                });
+            });
+        }
+        console.log(relatedEvents)
     }
 
     const getUrl = (id) => {
@@ -32,9 +41,8 @@ function EventDetail({ match }) {
     <br></br>
         <h1>Event Name: {event.name}</h1>
         <h1>Event Type: {event.event_type}</h1>
-        {relatedEvents.map(element => {
-            <h1>{element}</h1>
-            })}
+        {relatedEvents.map(element => <h1 key={element.id}>{element.name}</h1>)}
+    <Footer />
     </div>);
 }
 

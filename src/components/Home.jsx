@@ -1,37 +1,65 @@
-import React, { useState } from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 import Events from './Events';
+import Footer from './Footer';
 
 function Home(props) {
+    const [ eventData, setEventData ] = useState([]);
     const [ filter, setFilter ] = useState({
         search: '',
-        eventType: ['workshop',  'event_type', 'activity']
+        eventType: {
+            'workshop': true,
+            'tech_talk': true, 
+            'activity': true
+        },
+        sortByTime: false
     });
-    const updateCheckBox = (event) => {}
+
+    useEffect(() => {
+        fetch('https://api.hackthenorth.com/v3/graphql?query={ events { id name event_type permission start_time end_time description speakers { name profile_pic } public_url private_url related_events } }')
+        .then((response) => response.json())
+        .then((data) => {
+            setEventData(data.data.events);
+        })
+    }, []);
 
     const updateFilterSearch = (event) => {
-        const searchVal = event.target.value;
+        let value = event.target.value;
+        const name = event.target.name;
         setFilter(prev => {
+            if ((name === 'sortByTime')) {
+                value = !prev[name];
+            } else if (prev.eventType[name] !== undefined) {
+                return {
+                    ...prev,
+                    eventType: {
+                        ...prev.eventType,
+                        [name]: !prev.eventType[name]
+                    }
+                }
+            }
+
             return {
                 ...prev,
-                search: searchVal
+                [name]: value
             }
         });
     }
 
     return (
-        <div>
+        <div className="page-container">
+        <div className="contain">
             <h2 className="events-heading">Events</h2>
             <Row>
               <Col md={10}>
-              <Events isLoggedIn={props.loggedIn} filter={filter}/>
+              <Events isLoggedIn={props.loggedIn} filter={filter} eventData={eventData} />
               </Col>
               <Col md={2}>
               <div className="filter-form">
                 <h5>Filter Events</h5>
                 <Form>
                     <Form.Group controlId="exampleForm.ControlInput1">
-                        <Form.Control type="text" placeholder="Search" onChange={updateFilterSearch} />
+                        <Form.Control type="text" placeholder="Search" name="search" onChange={updateFilterSearch} />
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Event Type</Form.Label>
@@ -42,8 +70,8 @@ function Home(props) {
                             id={`default-checkbox`}
                             label={`Workshop`}
                             name='workshop'
-                            checked={true}
-                            onChange={updateCheckBox}
+                            checked={filter.eventType['workshop']}
+                            onChange={updateFilterSearch}
                         />
                         <Form.Check 
                         inline
@@ -51,8 +79,8 @@ function Home(props) {
                             id={`default-checkbox`}
                             label={`Tech Talk`}
                             name='tech_talk'
-                            checked={true}
-                            onChange={updateCheckBox}
+                            checked={filter.eventType['tech_talk']}
+                            onChange={updateFilterSearch}
                         />
                         <Form.Check 
                         inline
@@ -60,8 +88,8 @@ function Home(props) {
                             id={`default-checkbox`}
                             label={`Activity`}
                             name='activity'
-                            checked={true}
-                            onChange={updateCheckBox}
+                            checked={filter.eventType['activity']}
+                            onChange={updateFilterSearch}
                         />
                         </div>
                     </Form.Group>
@@ -69,11 +97,16 @@ function Home(props) {
                         <Form.Label>Duration</Form.Label>
                         <Form.Control type="range" />
                     </Form.Group>
+                    <Form.Group controlId="formBasicRange">
+                        <Button variant="primary" className="btn-block" name="sortByTime" onClick={updateFilterSearch}>Sort By Time</Button>
+                    </Form.Group>
                 </Form>
             </div>
               </Col>
             </Row>
         </div>
+        <Footer />
+    </div>
     );
 }
 

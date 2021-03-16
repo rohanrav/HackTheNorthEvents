@@ -14,16 +14,16 @@ function App() {
   }
 
   return (
-    <Container fluid="xs">
-      <Router>
-        <Nav loggedIn={loggedIn} />
-        <Switch>
-          <Route path="/login" render={(props) => (<Login {...props} loggedIn={loggedIn} loginCallbackFromParent={logInCallBack} />)}/>
-          <Route path="/" exact render={(props) => (<Home {...props} loggedIn={loggedIn}/>)}/>
-          <Route path="/event/:id" render={(props) => (<EventDetail {...props} />)}/>
-        </Switch>
-      </Router>
-    </Container>
+    <Router>
+        <Container fluid="xs">
+            <Nav loggedIn={loggedIn} />
+            <Switch>
+              <Route path="/login" render={(props) => (<Login {...props} loggedIn={loggedIn} loginCallbackFromParent={logInCallBack} />)}/>
+              <Route path="/" exact render={(props) => (<Home {...props} loggedIn={loggedIn}/>)}/>
+              <Route path="/event/:id" render={(props) => (<EventDetail {...props} loggedIn={loggedIn} />)}/>
+            </Switch>
+        </Container>
+    </Router>
   );
 }
 

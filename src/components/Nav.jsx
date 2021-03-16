@@ -22,8 +22,7 @@ function NavbarD(props) {
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto"></Nav>
             <Link to="/login">
-                {!props.loggedIn ? <Nav><Button variant="primary">Log In</Button></Nav> : 
-                          <Nav><Button variant="danger">Log Out</Button></Nav>}
+                {!props.loggedIn ? <Nav><Button variant="primary">Log In</Button></Nav> : null}
             </Link>
         </Navbar.Collapse>
         </Navbar>

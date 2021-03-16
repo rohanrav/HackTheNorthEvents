@@ -5,7 +5,7 @@ function Filter(props) {
     const [ localFilter, setLocalFilter ] = useState(props.filter);
 
     const updateCheckBox = (event) => {}
-    const updateFilterSearch = (event) => { //filterCallbackFromParent
+    const updateFilterSearch = (event) => {
         const searchVal = event.target.value;
         setLocalFilter(prev => {
             return {
