@@ -27,12 +27,14 @@ function EventsComponent(props) {
                         return false;
                     }
                 }
-                return true;
+                if (event.name.toLowerCase().includes(props.filter.search.toLowerCase())) {
+                    return true;
+                }
+                return false;
             })
-            console.log(res);
             setEvents(res)
         });
-    }, [])
+    }, [props.filter])
 
     return (
     <div>

@@ -1,29 +1,27 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './Nav';
-import Events from './Events';
-import Filter from './Filter'
-import { Container, Row, Col } from 'react-bootstrap';
+import Login from './Login';
+import EventDetail from './EventDetail';
+import Home from './Home';
+import { Container } from 'react-bootstrap';
 
 function App() {
   const [ loggedIn, setLoggedIn ] = useState(false);
-  const [ search, setSearch ] = useState('');
-  const [ eventType, setEventType ] = useState('');
+
+  const logInCallBack = (dataFromChild) => {
+    setLoggedIn(dataFromChild);
+  }
 
   return (
     <Container fluid="xs">
       <Router>
-        <Nav />
-          <h2 className="events-heading">Events</h2>
-        <Row>
-        
-        <Col md={10}>
-        <Events isLoggedIn={loggedIn}/>
-        </Col>
-        <Col md={2}>
-          <Filter />
-        </Col>
-      </Row>
+        <Nav loggedIn={loggedIn} />
+        <Switch>
+          <Route path="/login" render={(props) => (<Login {...props} loggedIn={loggedIn} loginCallbackFromParent={logInCallBack} />)}/>
+          <Route path="/" exact render={(props) => (<Home {...props} loggedIn={loggedIn}/>)}/>
+          <Route path="/event/:id" render={(props) => (<EventDetail {...props} />)}/>
+        </Switch>
       </Router>
     </Container>
   );
