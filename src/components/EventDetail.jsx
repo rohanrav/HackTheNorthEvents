@@ -46,14 +46,12 @@ function EventDetail(props) {
                 fetch(getUrl(id))
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data.data.event);
                     setRelatedEvents(prev => {
                         return [...prev, data.data.event]
                     });
                 });
             });
         }
-        console.log(relatedEvents)
     }
 
     const getUrl = (id) => {
@@ -75,9 +73,9 @@ function EventDetail(props) {
                 <Container fluid>
                     <Row>
                         <Col md={8}>
-                            <h2>Event Information: {event.name}</h2>
+                            <h2 className="event-name">{event.name}</h2>
                                 {!props.loggedIn ? <a href={event.public_url}><Button variant="primary" className="btn-block btn-join">See More</Button></a> :
-                                <a href={event.private_url}><Button variant="primary" className="btn-block join-btn">Join Event</Button></a>}
+                                <a href={event.private_url}><Button variant="primary" className="btn-block btn-join">Join Event</Button></a>}
                                 
                                 <Table striped bordered hover size="md">
                                 <tbody>
@@ -103,7 +101,7 @@ function EventDetail(props) {
                         <Col md={4}>
                             {speakers.map(speaker => {
                                 return (
-                                    <div key={speaker.name}>
+                                    <div key={speaker.name} className="speaker-container">
                                         <h2 className="speakers-title">Speakers</h2>
                                         <h5 className="name-title">Name: {speaker.name}</h5>
                                         <div className="speaker-img-container">
@@ -118,6 +116,7 @@ function EventDetail(props) {
             </div>
             <Row>
                 <Col>
+                <h2 className="related-events-title">Related Events</h2>
                     <CardDeck className="related-events">
                         {relatedEvents.map(event => renderCard(event))}
                     </CardDeck>

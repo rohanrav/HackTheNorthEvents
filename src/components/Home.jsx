@@ -51,10 +51,10 @@ function Home(props) {
         <div className="contain">
             <h2 className="events-heading">Events</h2>
             <Row>
-              <Col md={10}>
+              <Col lg={10}>
               <Events isLoggedIn={props.loggedIn} filter={filter} eventData={eventData} />
               </Col>
-              <Col md={2}>
+              <Col lg={2} className="filter-col">
               <div className="filter-form">
                 <h5>Filter Events</h5>
                 <Form>

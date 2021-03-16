@@ -16,7 +16,6 @@ function EventsComponent(props) {
     const [ events, setEvents ] = useState([]);
 
     useEffect(() => {
-        console.log(props.filter.eventType)
         let res = props.eventData.filter((event) => {
             if (!props.isLoggedIn) {
                 if (event.permission === 'private') {
@@ -29,7 +28,7 @@ function EventsComponent(props) {
                     return true;
                 }
             }
-
+            
             return false;
         });
         
