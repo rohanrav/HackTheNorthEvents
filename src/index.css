@@ -132,3 +132,38 @@ html {
 .enclose {
   background-color: #f8f9fa;
 }
+
+/*  EVENT DETAIL STYLES  */
+
+.event-detail-container {
+  margin-top: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.speakers-title {
+  text-align: center;
+}
+
+.name-title {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.related-events {
+  margin-bottom: 15px;
+  padding: 20px 50px 0 50px;
+}
+
+.speaker-img-container {
+  text-align: center;
+}
+
+.speaker-img {
+  max-width: 200px;
+  border-radius: 50%;
+}
+
+.btn-join {
+  margin: 15px 0 10px 0;
+}
