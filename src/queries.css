@@ -4,18 +4,24 @@
  * Author: Rohan Ravindran
  *----------------------------------------------------------*/
 
- @media only screen and (max-width: 1400px) {
+/*----------------------------------------------------------*/
+/* Breakpoint (1400 px) - Desktop */
+@media only screen and (max-width: 1400px) {
     .grid > div {
         flex-basis: calc(33.333% - 40px);
-      }
-  }
+    }
+}
 
-  @media only screen and (max-width: 1150px) {
+/*----------------------------------------------------------*/
+/* Breakpoint (1150 px) - Desktop */
+@media only screen and (max-width: 1150px) {
     .grid > div {
         flex-basis: calc(50% - 40px);
-      }
-  } 
+    }
+} 
 
+/*----------------------------------------------------------*/
+/* Breakpoint (992 px) - Tablet */
   @media only screen and (max-width: 992px) {
     .navbar-nav {
         margin-top: 10px;
@@ -45,6 +51,8 @@
     
   }
 
+  /*----------------------------------------------------------*/
+  /* Breakpoint (850 px) - Tablet */
   @media only screen and (max-width: 850px) {
     .login-card {
         padding: 50px 50px;
@@ -55,6 +63,8 @@
     }
   }
 
+  /*----------------------------------------------------------*/
+  /* Breakpoint (767 px) - Tablet */
   @media only screen and (max-width: 767px) {
       .speaker-container {
           margin: 15px 0;
@@ -69,6 +79,8 @@
       }
   }
 
+  /*----------------------------------------------------------*/
+  /* Breakpoint (650 px) - Tablet */
   @media only screen and (max-width: 650px) {
     .grid > div {
         flex-basis: calc(100% - 40px);
@@ -83,18 +95,10 @@
     }
   }
 
+  /*----------------------------------------------------------*/
+  /* Breakpoint (415 px) - Mobile */
   @media only screen and (max-width: 415px) {
-    .contain {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .event-detail-container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .related-events {
+    .contain, .event-detail-container, .related-events {
         padding-left: 15px;
         padding-right: 15px;
     }
