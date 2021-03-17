@@ -8,10 +8,13 @@ import React, { useEffect, useState } from "react";
 import { Container, Col, Row, Table, Button, CardDeck } from "react-bootstrap";
 import _ from "lodash";
 import Card from "./Card";
+import getEventDataById, { formatTime } from './utils'
 
-const options = { weekday: "long", month: "long", day: "numeric" };
+// Global Constants
+const timeFormat = { weekday: "long", month: "long", day: "numeric" };
 
 function EventDetail(props) {
+  // Setting state constants
   const [event, setEvent] = useState({});
   const [relatedEvents, setRelatedEvents] = useState([]);
   const [speakers, setSpeakers] = useState([]);
@@ -20,25 +23,18 @@ function EventDetail(props) {
     timeDuration: "",
   });
 
+  // Setting the useEffect Hook to fetch appropriate event data
   useEffect(() => {
     setRelatedEvents([]);
     fetch(getUrl(props.match.params.id))
       .then((response) => response.json())
       .then((data) => {
         setEvent(data.data.event);
-        const date = new Date(data.data.event.start_time);
-        let timeS = "";
-        if (date.getHours() > 12) {
-          timeS = `${date.toDateString()} (${date.getHours() - 12} PM)`;
-        } else {
-          timeS = `${date.toDateString()} (${date.getHours()} AM)`;
-        }
-
         setTime((prev) => {
           return {
-            timeString: timeS,
+            timeString: formatTime(data.data.event.start_time),
             timeDuration:
-              Math.abs(new Date(data.data.event.end_time) - date) / 36e5,
+              Math.abs(new Date(data.data.event.end_time) - new Date(data.data.event.start_time)) / 36e5,
           };
         });
 
@@ -47,24 +43,24 @@ function EventDetail(props) {
       });
   }, [props.match.params.id]);
 
+  // getRelatedEvents(related_events) fetches data of related events given an
+  //   array of Event ID's
   const getRelatedEvents = (related_events) => {
     if (related_events) {
       related_events.forEach((id) => {
-        fetch(getUrl(id))
-          .then((response) => response.json())
-          .then((data) => {
-            setRelatedEvents((prev) => {
-              return [...prev, data.data.event];
-            });
-          });
+        getEventDataById(id, setRelatedEvents, getUrl);
       });
+    } else {
+      console.log("Error Fetching Related Event Data")
     }
   };
 
+  // getUrl(id) returns the API endpoint for an event given it's ID
   const getUrl = (id) => {
     return `https://api.hackthenorth.com/v3/graphql?query={ event(id: ${id}) { id name event_type permission start_time end_time description speakers { name profile_pic } public_url private_url related_events } }`;
   };
 
+  // renderCard(event) returns a React Card component given an event object
   function renderCard(event) {
     return (
       <Card
@@ -74,7 +70,7 @@ function EventDetail(props) {
         description={event.description.substring(0, 250) + "..."}
         startTime={new Date(event.start_time).toLocaleDateString(
           undefined,
-          options
+          timeFormat
         )}
         className="related-events-card"
       ></Card>
@@ -151,7 +147,7 @@ function EventDetail(props) {
       </div>
       <Row>
         <Col>
-          <h2 className="related-events-title">Related Events</h2>
+          {(relatedEvents.length > 1) && <h2 className="related-events-title">Related Events</h2>}
           <CardDeck className="related-events">
             {relatedEvents.map((event) => renderCard(event))}
           </CardDeck>

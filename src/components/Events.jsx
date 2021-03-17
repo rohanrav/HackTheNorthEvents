@@ -7,8 +7,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
+// Global Constants
 const options = { weekday: "long", month: "long", day: "numeric" };
 
+// renderCard(event) returns a React Card component given an event object
 function renderCard(event) {
   return (
     <Card
@@ -25,8 +27,10 @@ function renderCard(event) {
 }
 
 function EventsComponent(props) {
+  // Setting state constants
   const [events, setEvents] = useState([]);
 
+  // Setting the useEffect Hook to filter and sort event data
   useEffect(() => {
     let res = props.eventData.filter((event) => {
       if (!props.isLoggedIn) {

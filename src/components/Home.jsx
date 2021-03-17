@@ -10,6 +10,7 @@ import Events from "./Events";
 import Footer from "./Footer";
 
 function Home(props) {
+  // Setting state constants
   const [eventData, setEventData] = useState([]);
   const [filter, setFilter] = useState({
     search: "",
@@ -21,6 +22,7 @@ function Home(props) {
     sortByTime: false,
   });
 
+  // Setting the useEffect Hook to fetch all event data
   useEffect(() => {
     fetch(
       "https://api.hackthenorth.com/v3/graphql?query={ events { id name event_type permission start_time end_time description speakers { name profile_pic } public_url private_url related_events } }"
@@ -31,6 +33,7 @@ function Home(props) {
       });
   }, []);
 
+  // updateFilterSearch(event) updates the state variable filter given an user event
   const updateFilterSearch = (event) => {
     let value = event.target.value;
     const name = event.target.name;

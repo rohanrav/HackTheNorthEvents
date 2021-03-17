@@ -13,7 +13,11 @@ import EventDetail from "./EventDetail";
 import Home from "./Home";
 
 function App() {
+  // Setting state constants
   const [loggedIn, setLoggedIn] = useState(false);
+
+  // logInCallBack(data) uses calls setLoggedIn to update
+  //   the state of loggedIn
   const logInCallBack = (dataFromChild) => {
     setLoggedIn(dataFromChild);
   };

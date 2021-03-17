@@ -9,13 +9,13 @@ import { Form, Button, Container, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 
 function Login(props) {
+  // Setting state constants
   const [logIn, setLogIn] = useState(props.loggedIn);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleClick(event) {
-    console.log(email);
-    console.log(password);
+  // handleLogin(event) handles the Form React Component on submit
+  function handleLogin(event) {
     event.preventDefault();
     if (email === "test@htn.com" && password === "1234") {
       props.loginCallbackFromParent(true);
@@ -25,10 +25,12 @@ function Login(props) {
     }
   }
 
+  // onEmailChange(event) sets the email state when user input changes
   function onEmailChange(event) {
     setEmail(event.target.value);
   }
 
+  // onPasswordChange(event) sets the password state when user input changes
   function onPasswordChange(event) {
     setPassword(event.target.value);
   }
@@ -40,7 +42,7 @@ function Login(props) {
       <Container className="login-form">
         <Card className="login-card">
           <h1>Login</h1>
-          <Form onSubmit={handleClick}>
+          <Form onSubmit={handleLogin}>
             <Form.Group controlId="formEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control

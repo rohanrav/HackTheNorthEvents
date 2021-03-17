@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 
 function Footer() {
+  // Dimension Constants
   const height = 25;
   const width = 25;
 
