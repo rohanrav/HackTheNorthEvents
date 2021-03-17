@@ -22,7 +22,8 @@ While I was familiar with what react was and how it worked, actually building an
 * Updating complex state and using the javascript spread operator in doing so to keep the code sleek 
 
 ### Areas that you are proud of
-* I am especially proud of the filter feature I put in, to allow a user to search and filter by event type and start time. This was something that was tough to implement, as keeping track of this complex state with many properties and updating state appropriately was definitely a challenge. All in all, just proud of myself for finishing this project, first time using react I am proud of myself for finishing this project and learning a lot about react over the past 4-5 days.
+* I am especially proud of the filter feature I put in, to allow a user to search and filter by event type and start time. This was something that was tough to implement, as keeping track of this complex state with many properties and updating state appropriately was definitely a challenge. 
+* All in all, just proud of myself for finishing this project, first time using react I am proud of myself for finishing this project and learning a lot about react over the past 4-5 days.
 
 ## Next Steps
 Given more time, I would liked to add the following to my application:
