@@ -1,7 +1,7 @@
 # Hack The North (Events)
 
 ## Deployment Information 
-* You can visit the deployed application at the link [Here.](https://stormy-ravine-02564.herokuapp.com/)
+* You can visit the deployed application at the link [https://stormy-ravine-02564.herokuapp.com](https://stormy-ravine-02564.herokuapp.com/)
 * The duration slider on the event filter section of the site does not work (I did not have enough time to finish implementing it)
 
 ## Development Process
@@ -11,23 +11,22 @@
 
 ### Technology Used (React)
 * While I did not have any major experience with using React before building this project I choose to use React because I understood the benefits that I gain. Getting reusable components (less code), an overall faster application with no page refreshhes, and more, made it the best candidate to build this application.
-* As I knew I wanted to have multiple routes of my react application, I decided to use React router to separate and have a login, event detail, and home page.
+* As I knew I wanted to have multiple routes of my react application, I decided to use React router to create my login, event detail, and home routes.
 
 ### Challenges Faced
-* This project was definitely a challenging one to build, this was my first time building a react application outside of codesandbox
-While I was familiar with what react was and how it worked, actually building an application with it proved to be a challenge for me espceiall considering it was my first time. 
+* This project was definitely a challenging one to build, especially considering the face that this was my first time building a React application outside of CodeSandbox. While I was familiar with what React was before tackling this challenege, actually building an application with it proved to be a pretty big challenge.
 #### Some of the particularly pesky problems I faced were:
-* Dealing with JavaScript Async functions and Promises. When fetching data from the API, getting results back that were undefined when the fetch javascript function would not work was definitely frustrating. Going over how javascript promises work again, and covering the ,then and .catch functions helped me solve this issue.
-* Passing state between components. The idea of passing state between parent and child components was definitely something new for me to wrap my head around 
-* Updating complex state and using the javascript spread operator in doing so to keep the code sleek 
+* Dealing with JavaScript Async functions and Promises. When fetching data from the API, I kept running into problems when getting results back null responses when the fetch() JavaScript function was not working how I thought it would was definitely frustrating. Going over how JavaScript promises work again, and covering the .then() and fetch() functions helped me solve this issue.
+* Understanding how passing state between child and parent components worked (Lifting up State), and implementing this myself was definetly a challenge. Reading the React Documentation helped me solve this issue.
+* Updating complex state and using the JavaScript Spread operator was a challenge, espciallyy when it came to implementing the filter feature of my application. Reading the MDN Documentation, and experimenting with this helped me overcome this.
 
 ### Areas that you are proud of
-* I am especially proud of the filter feature I put in, to allow a user to search and filter by event type and start time. This was something that was tough to implement, as keeping track of this complex state with many properties and updating state appropriately was definitely a challenge. 
+* I am especially proud of the filter feature I put in, to allow a user to search, filter by event type, and start time. This was something that was tough to implement, as keeping track of a complex state with many properties and updating state appropriately was definitely a challenge. 
 * All in all, just proud of myself for finishing this project, first time using react I am proud of myself for finishing this project and learning a lot about react over the past 4-5 days.
 
 ## Next Steps
 Given more time, I would liked to add the following to my application:
-* I would like to improve the styling of the components as I feel it is kind of basic, perhaps I could consult with a professional graphic designer to get a better UI .
-* I would make proper loading animations (especially when loading event details), as there is a delay that is not very appealing for someone who is using the site.
 * Further modularize the components in the code, I feel like for some components, I could further break down the code in more modules - make the code easier to read, debug, and work on.
+* I would like to improve the styling of the components as I feel it is kind of bland. Perhaps I could consult with a professional graphic designer to get a better looking and more functional UI.
+* I would make proper loading animations to make the UI smoother and more appealing to the end user.
 
