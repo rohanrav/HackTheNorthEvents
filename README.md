@@ -26,6 +26,6 @@
 
 ## Next Steps
 Given more time, I would like to add the following to my application:
-* Further modularize the components in the code. I feel for some components, I could further break down the code into more modules.
+* Further modularize the components in the code. I feel for some components, I could further break down the code into more modules. This way, the code becomes easier to debug, work on with others, and maintain over time.
 * I would like to improve the styling of the components as I feel it is kind of bland. Perhaps I could consult with a professional graphic designer to get a better-looking and more functional UI.
 * I would make proper loading animations to make the UI smoother and more appealing to the end-user.
