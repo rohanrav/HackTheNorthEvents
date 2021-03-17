@@ -6,15 +6,15 @@
 
 ## Development Process
 ### Planning the structure and design:
-* Before I started coding this project, I planned out how the application would work by determining what functionality needed to be implemented, how the application would look, and what technology I would use to build it. In terms of the design, I drew mockups of how I wanted the application to look, then determined the different components that would need to be built and built out the components. I relied on React-Bootstrap and my own custom styling to make the application look like the mockups I had designed, and implemented CSS Media Queries to ensure the website would run nicely on mobile devices. 
+* Before I started coding this project, I planned out how the application would work by determining what functionality needed to be implemented, how the application would look, and what technology I would use to build it. In terms of the design, I drew mockups of how I wanted the application to look, then determined the different components that would need to be built, and then built out the components. I relied on React-Bootstrap and my own custom styling to make the application look like the mockups I had designed, and implemented CSS Media Queries to ensure the website would run nicely on mobile devices. 
 * The Structure of the application consisted of several smaller components that were put together in the App.js file, which was then rendered.
 
 ### Technology Used (React)
-* While I did not have any major experience with using React before building this project I choose to use React because I understood the benefits that I would gain. Getting reusable components (less code), an overall faster application with no page refreshes and more made it the best candidate to build this application.
+* While I did not have any major experience with using React before building this project I choose to use React because I understood the benefits that I would gain. Getting reusable components (less code), an overall faster application with no page refreshes, and more, made it the best candidate to build this application.
 * As I knew I wanted to have multiple routes of my react application, I decided to use React Router to create my login, event detail, and home routes.
 
 ### Challenges Faced
-* This project was definitely a challenging one to build, especially considering the fact that this was my first time building a React application outside of CodeSandbox. While I was familiar with what React was before tackling this challenge, actually building an application with it proved to be a pretty big challenge.
+* This project was definitely a challenging one to build, especially considering the fact that this was my first time building a "real" React application outside of CodeSandbox. While I was familiar with what React was before tackling this challenge, actually building an application with it proved to be a pretty big challenge.
 #### Some of the particularly pesky problems I faced were:
 * Dealing with JavaScript Async functions and Promises. When fetching data from the API, I kept running into problems when getting back null responses when the fetch() JavaScript function was not working as I intended. Going over how JavaScript promises work again, and covering the .then() and fetch() functions helped me solve this issue.
 * Understanding how passing state between child and parent components worked (Lifting up State), and implementing this myself was definitely a challenge. Reading the React Documentation helped me solve this issue.
