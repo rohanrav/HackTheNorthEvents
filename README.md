@@ -3,6 +3,7 @@
 ## Important Information 
 * You can visit the deployed application at the link [https://stormy-ravine-02564.herokuapp.com](https://stormy-ravine-02564.herokuapp.com/)
 * The duration slider on the event filter section of the site does not work (I did not have enough time to finish implementing it)
+* Use the Log In Credentials (Username: "test@htn.com", Password: "1234")
 
 ## Development Process
 ### Planning the structure and design:
